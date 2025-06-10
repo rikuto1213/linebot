@@ -1,0 +1,9 @@
+djangoおすすめ 
+
+fastapi
+
+pythonのフレームワーク使って学食スクレイピング###
+
+neonデータベース保存
+
+GAS定期実行endpointたたく
