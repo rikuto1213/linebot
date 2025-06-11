@@ -1,10 +1,5 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.forms import ModelForm
-
-<<<<<<< HEAD
-# Create your views here.
-#
-=======
 from bot_app.models import Post
 
 
@@ -99,4 +94,3 @@ class PostForm(ModelForm):
         model = Post
         # fields は models.py で定義している変数名
         fields = ('name', 'micropost')
->>>>>>> cffd773
