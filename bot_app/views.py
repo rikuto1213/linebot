@@ -2,26 +2,33 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.forms import ModelForm
 from bot_app.models import Post
 from bot_app.models import Picture
-
+from bs4 import BeautifulSoup
+from selenium import webdriver
+import requests
+import os
 #URLと処理を関連付けるビューを定義
+
 
 
 def Pic_post(request):
     
 
     pic_post=Picture()#ここまでは実行できてる.
-
+    print("s")
     if request.method =='GET':
-        print("jjjjjjjj")
+        
+        
 
         form=PostForm(request.POST,instance=pic_post)
 
+        return redirect('bot_app:read_post')
+    
         if form.is_valid():
             # チェック結果に問題なければデータを作成する
             pic_post = form.save(commit=False)
             pic_post.save()
 
-        return redirect('bot_app:read_post')
+        
 
 
 def create_post(request):
