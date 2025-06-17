@@ -1,6 +1,27 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.forms import ModelForm
 from bot_app.models import Post
+from bot_app.models import Picture
+
+#URLと処理を関連付けるビューを定義
+
+
+def Pic_post(request):
+    
+
+    pic_post=Picture()#ここまでは実行できてる.
+
+    if request.mothod =='GET':
+        print("jjjjjjjj")#なぜか実行されてない.
+
+        form=PostForm(request.POST,instance=pic_post)
+
+        if form.is_valid():
+            # チェック結果に問題なければデータを作成する
+            pic_post = form.save(commit=False)
+            pic_post.save()
+
+        return redirect('bot_app:read_post')
 
 
 def create_post(request):
@@ -85,6 +106,9 @@ def delete_post(request, post_id):
     # 削除リクエスト時は削除実行後、一覧表示画面へリダイレクトする
     return redirect('bot_app:read_post')
 
+def savepic():
+    print("hozon")
+    
 
 class PostForm(ModelForm):
     """

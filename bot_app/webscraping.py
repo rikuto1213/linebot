@@ -40,7 +40,7 @@ def image_scraping(url, save_folder):
 # 画像スクレイピングを実行する
 if __name__ == "__main__":
     target_url = 'https://west2-univ.jp/sp/menu.php?t=650311'  # スクレイピング対象のURLを指定
-    save_folder = 'C:\\Users\\nisir\\linebot\\bot_app\\templates\\images'  # 画像を保存するフォルダを指定
+    save_folder = 'C:\\Users\\nisir\\linebot\\bot_app\\images'  # 画像を保存するフォルダを指定
     if not os.path.exists(save_folder):
         os.makedirs(save_folder)
     image_scraping(target_url, save_folder)
