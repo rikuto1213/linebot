@@ -11,8 +11,8 @@ def Pic_post(request):
 
     pic_post=Picture()#ここまでは実行できてる.
 
-    if request.mothod =='GET':
-        print("jjjjjjjj")#なぜか実行されてない.
+    if request.method =='GET':
+        print("jjjjjjjj")
 
         form=PostForm(request.POST,instance=pic_post)
 
