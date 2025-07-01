@@ -1,7 +1,19 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.forms import ModelForm
 from bot_app.models import Post
+from bot_app.models import Picture
+from bot_app.forms import PictureForm
 
+
+def upload_picture(request):
+    if request.method == 'POST':
+        form = PictureForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect('success')  # 成功時にリダイレクトするURL
+    else:
+        form = PictureForm()
+    return render(request, 'bot_app/success.html', {'form': form})
 
 def create_post(request):
     """
