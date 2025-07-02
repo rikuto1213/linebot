@@ -1,5 +1,7 @@
+# your_app/models.py
 from django.db import models
 
+<<<<<<< HEAD
 # Create my model　
 #データベースと関連するフィールドを定義する
 class Picture(models.Model):
@@ -18,3 +20,11 @@ class Post(models.Model):
 
     
 
+=======
+class ImageData(models.Model):
+    name = models.CharField(max_length=100)
+    image_base64 = models.TextField()
+
+    def __str__(self):
+        return self.name
+>>>>>>> new

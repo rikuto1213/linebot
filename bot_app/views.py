@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 from django.shortcuts import render, get_object_or_404, redirect
 from django.forms import ModelForm
 from bot_app.models import Post
@@ -29,36 +30,28 @@ def Pic_post(request):
             pic_post.save()
 
         
+=======
+# your_app/views.py
+import base64
+from django.shortcuts import render, redirect
+from .models import ImageData
+from .forms import UploadImageForm
+>>>>>>> new
 
-
-def create_post(request):
-    """
-    新たなデータを作成する
-    """
-    # オブジェクトを新規作成する
-    post = Post()
-
-    # ページロード時
-    if request.method == 'GET':
-        # 新規作成オブジェクトにより form を作成
-        form = PostForm(instance=post)
-
-        # ページロード時は form を Template に渡す
-        return render(request,
-                      'bot_app/post_form.html',  # 呼び出す Template
-                      {'form': form})  # Template に渡すデータ
-
-    # 実行ボタン押下時
+def upload_image(request):
     if request.method == 'POST':
-        # POST されたデータにより form を作成
-        form = PostForm(request.POST, instance=post)
-
-        # 入力されたデータのバリデーション
+        form = UploadImageForm(request.POST, request.FILES)
         if form.is_valid():
-            # チェック結果に問題なければデータを作成する
-            post = form.save(commit=False)
-            post.save()
+            image_file = request.FILES['image']
+            image_name = image_file.name
+            encoded_image = base64.b64encode(image_file.read()).decode('utf-8')
+            ImageData.objects.create(name=image_name, image_base64=encoded_image)
+            return redirect('image_list')
+    else:
+        form = UploadImageForm()
+    return render(request, 'bot_app/upload.html', {'form': form})
 
+<<<<<<< HEAD
         return redirect('bot_app:read_post')
 
 
@@ -125,3 +118,8 @@ class PostForm(ModelForm):
         model = Post
         # fields は models.py で定義している変数名
         fields = ('name', 'micropost')
+=======
+def image_list(request):
+    images = ImageData.objects.all()
+    return render(request, 'bot_app/image_list.html', {'images': images})
+>>>>>>> new

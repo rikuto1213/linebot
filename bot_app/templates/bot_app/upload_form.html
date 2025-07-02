@@ -1,0 +1,5 @@
+<form method="post">
+  {% csrf_token %}
+  <textarea name="image_data" rows="10" cols="50" placeholder="base64画像データを貼り付けて"></textarea>
+  <button type="submit">アップロード</button>
+</form>

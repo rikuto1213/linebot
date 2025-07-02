@@ -1,0 +1,8 @@
+<!-- templates/image_list.html -->
+<h2>アップロードされた画像</h2>
+{% for img in images %}
+    <div>
+        <p>{{ img.name }}</p>
+        <img src="data:image/jpeg;base64,{{ img.image_base64 }}" alt="{{ img.name }}" width="200">
+    </div>
+{% endfor %}
